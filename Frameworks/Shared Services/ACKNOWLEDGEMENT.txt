@@ -1,0 +1,8 @@
+
+|-------------------------------------------------------------------|
+|                                                                   |
+|  Portions of the “Cocoa Extensions” framework may utilize         |
+|  copyrighted work derived from various 3rd party, open source     |
+|  projects. The use of this work is hereby acknowledged.           |
+|                                                                   |
+|-------------------------------------------------------------------|
