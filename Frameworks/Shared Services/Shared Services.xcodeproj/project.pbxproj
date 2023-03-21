@@ -7,21 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1314CD29C916A900623762 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314CC29C916A900623762 /* NSLayoutConstraint.swift */; };
+		4C1314D129C9241200623762 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314D029C9241200623762 /* NSFont.swift */; };
+		4C1314D329C9B76300623762 /* NSArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314D229C9B76300623762 /* NSArrayController.swift */; };
 		4C5847F029C66C570056B910 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847EF29C66C570056B910 /* Logging.swift */; };
 		4C5847F229C671FA0056B910 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847F129C671FA0056B910 /* Accessibility.swift */; };
 		4C68752620E2CA530055E541 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68752520E2CA530055E541 /* Number.swift */; };
-		4C77C46D29C6B7A300C4BFB6 /* NSBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C46C29C6B7A300C4BFB6 /* NSBundleHelper.swift */; };
-		4C77C47429C6BA1000C4BFB6 /* NSByteCountFormatterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatterHelper.swift */; };
-		4C77C47529C6BA1000C4BFB6 /* NSCharacterSetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47329C6BA1000C4BFB6 /* NSCharacterSetHelper.swift */; };
-		4C77C47B29C6C0CE00C4BFB6 /* NSDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47729C6C0CE00C4BFB6 /* NSDateHelper.swift */; };
-		4C77C47D29C6C0CE00C4BFB6 /* NSColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47929C6C0CE00C4BFB6 /* NSColorHelper.swift */; };
-		4C7C045729C682150011FAD6 /* NSArrayControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C045629C682150011FAD6 /* NSArrayControllerHelper.swift */; };
+		4C77C46D29C6B7A300C4BFB6 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C46C29C6B7A300C4BFB6 /* NSBundle.swift */; };
+		4C77C47429C6BA1000C4BFB6 /* NSByteCountFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatter.swift */; };
+		4C77C47529C6BA1000C4BFB6 /* NSCharacterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47329C6BA1000C4BFB6 /* NSCharacterSet.swift */; };
+		4C77C47B29C6C0CE00C4BFB6 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47729C6C0CE00C4BFB6 /* NSDate.swift */; };
+		4C77C47D29C6C0CE00C4BFB6 /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C77C47929C6C0CE00C4BFB6 /* NSColor.swift */; };
 		4C9C09C029C662370047A0DE /* AddressBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C09BF29C662370047A0DE /* AddressBook.swift */; };
 		4CA41C061AC1A73600756137 /* ACKNOWLEDGEMENT.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4CA41C041AC1A73600756137 /* ACKNOWLEDGEMENT.txt */; };
 		4CA41C081AC1A73600756137 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4CA41C051AC1A73600756137 /* LICENSE.txt */; };
 		4CAA489B20E46AB500FDE1F5 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAA489A20E46AB500FDE1F5 /* Data.swift */; };
-		4CB76CCE29C702EE00B3EDDB /* NSFileManagerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB76CCB29C702ED00B3EDDB /* NSFileManagerHelper.swift */; };
-		4CB76CD229C7939200B3EDDB /* NSURLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB76CD129C7939200B3EDDB /* NSURLHelper.swift */; };
+		4CB76CCE29C702EE00B3EDDB /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB76CCB29C702ED00B3EDDB /* NSFileManager.swift */; };
+		4CB76CD229C7939200B3EDDB /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB76CD129C7939200B3EDDB /* NSURL.swift */; };
 		4CD09D4220E072BF008BADA5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD09D4120E072BF008BADA5 /* String.swift */; };
 		4CE04D9C20E10609000C74E6 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE04D9B20E10609000C74E6 /* Dictionary.swift */; };
 		4CE04D9E20E10CC4000C74E6 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE04D9D20E10CC4000C74E6 /* Array.swift */; };
@@ -31,6 +33,9 @@
 /* Begin PBXFileReference section */
 		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		4C1314CC29C916A900623762 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
+		4C1314D029C9241200623762 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
+		4C1314D229C9B76300623762 /* NSArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArrayController.swift; sourceTree = "<group>"; };
 		4C1338F81B8E4A860085F6A4 /* XRSystemInformation.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = XRSystemInformation.strings; path = "Resources/Language Files/XRSystemInformation.strings"; sourceTree = "<group>"; };
 		4C1923CB1A900DBF0076F65A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4C1DC23D1F14309100C61416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -39,12 +44,11 @@
 		4C5847EF29C66C570056B910 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4C5847F129C671FA0056B910 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Accessibility.swift; path = Classes/Accessibility.swift; sourceTree = "<group>"; };
 		4C68752520E2CA530055E541 /* Number.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
-		4C77C46C29C6B7A300C4BFB6 /* NSBundleHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundleHelper.swift; sourceTree = "<group>"; };
-		4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatterHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSByteCountFormatterHelper.swift; sourceTree = "<group>"; };
-		4C77C47329C6BA1000C4BFB6 /* NSCharacterSetHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCharacterSetHelper.swift; sourceTree = "<group>"; };
-		4C77C47729C6C0CE00C4BFB6 /* NSDateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateHelper.swift; sourceTree = "<group>"; };
-		4C77C47929C6C0CE00C4BFB6 /* NSColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColorHelper.swift; sourceTree = "<group>"; };
-		4C7C045629C682150011FAD6 /* NSArrayControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArrayControllerHelper.swift; sourceTree = "<group>"; };
+		4C77C46C29C6B7A300C4BFB6 /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
+		4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSByteCountFormatter.swift; sourceTree = "<group>"; };
+		4C77C47329C6BA1000C4BFB6 /* NSCharacterSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCharacterSet.swift; sourceTree = "<group>"; };
+		4C77C47729C6C0CE00C4BFB6 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDate.swift; sourceTree = "<group>"; };
+		4C77C47929C6C0CE00C4BFB6 /* NSColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
 		4C9C09BF29C662370047A0DE /* AddressBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddressBook.swift; path = Classes/AddressBook.swift; sourceTree = "<group>"; };
 		4CA41C041AC1A73600756137 /* ACKNOWLEDGEMENT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ACKNOWLEDGEMENT.txt; sourceTree = "<group>"; };
 		4CA41C051AC1A73600756137 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
@@ -52,8 +56,8 @@
 		4CA41C101AC1A76E00756137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		4CA63AFC1B63FAE5002CF61C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		4CAA489A20E46AB500FDE1F5 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		4CB76CCB29C702ED00B3EDDB /* NSFileManagerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManagerHelper.swift; sourceTree = "<group>"; };
-		4CB76CD129C7939200B3EDDB /* NSURLHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURLHelper.swift; sourceTree = "<group>"; };
+		4CB76CCB29C702ED00B3EDDB /* NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager.swift; sourceTree = "<group>"; };
+		4CB76CD129C7939200B3EDDB /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
 		4CD09D4120E072BF008BADA5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4CE04D9B20E10609000C74E6 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		4CE04D9D20E10CC4000C74E6 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -154,13 +158,13 @@
 		4C5847F429C67FDC0056B910 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				4CB76CCB29C702ED00B3EDDB /* NSFileManagerHelper.swift */,
-				4C77C46C29C6B7A300C4BFB6 /* NSBundleHelper.swift */,
-				4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatterHelper.swift */,
-				4C77C47329C6BA1000C4BFB6 /* NSCharacterSetHelper.swift */,
-				4C77C47929C6C0CE00C4BFB6 /* NSColorHelper.swift */,
-				4C77C47729C6C0CE00C4BFB6 /* NSDateHelper.swift */,
-				4CB76CD129C7939200B3EDDB /* NSURLHelper.swift */,
+				4C77C46C29C6B7A300C4BFB6 /* NSBundle.swift */,
+				4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatter.swift */,
+				4C77C47329C6BA1000C4BFB6 /* NSCharacterSet.swift */,
+				4C77C47929C6C0CE00C4BFB6 /* NSColor.swift */,
+				4C77C47729C6C0CE00C4BFB6 /* NSDate.swift */,
+				4CB76CCB29C702ED00B3EDDB /* NSFileManager.swift */,
+				4CB76CD129C7939200B3EDDB /* NSURL.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -168,7 +172,9 @@
 		4C5847F529C67FE90056B910 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
-				4C7C045629C682150011FAD6 /* NSArrayControllerHelper.swift */,
+				4C1314D229C9B76300623762 /* NSArrayController.swift */,
+				4C1314D029C9241200623762 /* NSFont.swift */,
+				4C1314CC29C916A900623762 /* NSLayoutConstraint.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -292,22 +298,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CB76CCE29C702EE00B3EDDB /* NSFileManagerHelper.swift in Sources */,
+				4CB76CCE29C702EE00B3EDDB /* NSFileManager.swift in Sources */,
 				4CE04D9C20E10609000C74E6 /* Dictionary.swift in Sources */,
-				4C77C47529C6BA1000C4BFB6 /* NSCharacterSetHelper.swift in Sources */,
-				4C77C47D29C6C0CE00C4BFB6 /* NSColorHelper.swift in Sources */,
-				4C77C47B29C6C0CE00C4BFB6 /* NSDateHelper.swift in Sources */,
-				4C77C46D29C6B7A300C4BFB6 /* NSBundleHelper.swift in Sources */,
+				4C1314D129C9241200623762 /* NSFont.swift in Sources */,
+				4C1314CD29C916A900623762 /* NSLayoutConstraint.swift in Sources */,
+				4C77C47529C6BA1000C4BFB6 /* NSCharacterSet.swift in Sources */,
+				4C77C47D29C6C0CE00C4BFB6 /* NSColor.swift in Sources */,
+				4C77C47B29C6C0CE00C4BFB6 /* NSDate.swift in Sources */,
+				4C77C46D29C6B7A300C4BFB6 /* NSBundle.swift in Sources */,
+				4C1314D329C9B76300623762 /* NSArrayController.swift in Sources */,
 				4C9C09C029C662370047A0DE /* AddressBook.swift in Sources */,
 				4CAA489B20E46AB500FDE1F5 /* Data.swift in Sources */,
 				4CD09D4220E072BF008BADA5 /* String.swift in Sources */,
 				4CFB742520E480A4001B88CE /* Error.swift in Sources */,
-				4C77C47429C6BA1000C4BFB6 /* NSByteCountFormatterHelper.swift in Sources */,
+				4C77C47429C6BA1000C4BFB6 /* NSByteCountFormatter.swift in Sources */,
 				4C68752620E2CA530055E541 /* Number.swift in Sources */,
 				4CE04D9E20E10CC4000C74E6 /* Array.swift in Sources */,
-				4CB76CD229C7939200B3EDDB /* NSURLHelper.swift in Sources */,
+				4CB76CD229C7939200B3EDDB /* NSURL.swift in Sources */,
 				4C5847F229C671FA0056B910 /* Accessibility.swift in Sources */,
-				4C7C045729C682150011FAD6 /* NSArrayControllerHelper.swift in Sources */,
 				4C5847F029C66C570056B910 /* Logging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
