@@ -96,4 +96,14 @@ public extension CharacterSet
 	{
 		CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._")
 	}()
+
+	/// Character set that contains:
+	/// `/|:`, newlines, control characters, and not-yet-defined Unicode characters.
+	static let illegalFilenameCharacters: CharacterSet =
+	{
+		CharacterSet(charactersIn: "/|:")
+			.union(newlines)
+			.union(controlCharacters)
+			.union(illegalCharacters)
+	}()
 }

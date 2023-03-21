@@ -119,4 +119,55 @@ public extension String
 	{
 		removingPercentEncoding
 	}
+
+	/// Return new string by removing whitespaces and newlines from both sides of string.
+	@inlinable var trim: String
+	{
+		trimmingCharacters(in: .whitespacesAndNewlines)
+	}
+
+	/// Return new string by removing newlines from both sides of string.
+	@inlinable var trimmingNewlines: String
+	{
+		trimmingCharacters(in: .newlines)
+	}
+
+	/// Return new string by removing all newlines.
+	@inlinable var removingNewlines: String
+	{
+		replaceOccurrences(of: .newlines, with: "")
+	}
+
+	/// Replace sequences of multiple whitespaces with a single.
+	@inlinable var collapsingWhitespaces: String
+	{
+		components(separatedBy: .whitespaces).filter( { $0.isEmpty == false } ).joined(separator: " ")
+	}
+
+	/// Replace occurrences of a character set with a string value.
+	@inlinable func replaceOccurrences(of characters: CharacterSet, with replacement: String) -> String
+	{
+		components(separatedBy: characters).joined(separator: replacement)
+	}
+
+	/// Remove a prefix from beginning of string.
+	/// - Parameter prefix: Prefix to remove.
+	/// - Returns: String without prefix. Or original value if prefix is not present.
+	func removingPrefix(_ prefix: String) -> String
+	{
+		guard hasPrefix(prefix) else {
+			return self
+		}
+
+		return String(dropFirst(prefix.count))
+	}
+
+	/// Sanitize string to make it safe to use as a filename.
+	///
+	/// See `CharacterSet.illegalFilenameCharacters` for a list of
+	/// characters replaced with an underscore (`_`).
+	var safeFilename: String
+	{
+		replaceOccurrences(of: .illegalFilenameCharacters, with: "_").collapsingWhitespaces
+	}
 }
