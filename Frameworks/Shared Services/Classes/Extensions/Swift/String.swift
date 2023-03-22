@@ -166,7 +166,7 @@ public extension String
 	///
 	/// See `CharacterSet.illegalFilenameCharacters` for a list of
 	/// characters replaced with an underscore (`_`).
-	var safeFilename: String
+	@inlinable var safeFilename: String
 	{
 		replaceOccurrences(of: .illegalFilenameCharacters, with: "_").collapsingWhitespaces
 	}
