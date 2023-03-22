@@ -47,8 +47,8 @@ public extension NSTextField
 
 		let range = string.ranges(of: " ")
 
-		if range.isEmpty == false {
-			return String(string[string.startIndex..<range.first!.lowerBound])
+		if let firstRange = range.first {
+			return String(string[string.startIndex..<firstRange.lowerBound])
 		}
 
 		return string
