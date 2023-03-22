@@ -30,17 +30,13 @@
 *
 *********************************************************************** */
 
-import os.log
+ @import Foundation;
+ @import os.log;
 
-internal extension OSLog
-{
-	/// Log system used for all framework purposes
-	static let frameworkLog = OSLog(subsystem: "com.codeux.frameworks.SharedServices", category: "General")
-}
+ NS_ASSUME_NONNULL_BEGIN
 
-@objc(XRLogging)
-@objcMembers
-internal class XRLogging: NSObject
-{
-	static let frameworkLog = { OSLog.frameworkLog }()
-}
+@interface XRLogging : NSObject
+@property (nonatomic, class, readonly, strong) os_log_t _Nonnull frameworkLog;
+@end
+
+ NS_ASSUME_NONNULL_END

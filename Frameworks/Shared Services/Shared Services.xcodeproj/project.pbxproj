@@ -12,6 +12,9 @@
 		4C1314D329C9B76300623762 /* NSArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314D229C9B76300623762 /* NSArrayController.swift */; };
 		4C1314F929CA6E9300623762 /* NSWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314F829CA6E9300623762 /* NSWorkspace.swift */; };
 		4C1314FB29CA713000623762 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314FA29CA713000623762 /* NSTextField.swift */; };
+		4C13150129CB025600623762 /* SharedServices.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13150029CB024700623762 /* SharedServices.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C13150329CB029C00623762 /* NSMethodSignature.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C13150229CB029C00623762 /* NSMethodSignature.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C13150529CB02FD00623762 /* NSMethodSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C13150429CB02FC00623762 /* NSMethodSignature.m */; };
 		4C5847F029C66C570056B910 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847EF29C66C570056B910 /* Logging.swift */; };
 		4C5847F229C671FA0056B910 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847F129C671FA0056B910 /* Accessibility.swift */; };
 		4C68752620E2CA530055E541 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C68752520E2CA530055E541 /* Number.swift */; };
@@ -40,6 +43,11 @@
 		4C1314D229C9B76300623762 /* NSArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArrayController.swift; sourceTree = "<group>"; };
 		4C1314F829CA6E9300623762 /* NSWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWorkspace.swift; sourceTree = "<group>"; };
 		4C1314FA29CA713000623762 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
+		4C1314FF29CB017600623762 /* SharedServices.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedServices.pch; sourceTree = "<group>"; };
+		4C13150029CB024700623762 /* SharedServices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedServices.h; sourceTree = "<group>"; };
+		4C13150229CB029C00623762 /* NSMethodSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMethodSignature.h; sourceTree = "<group>"; };
+		4C13150429CB02FC00623762 /* NSMethodSignature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMethodSignature.m; sourceTree = "<group>"; };
+		4C13150629CB064100623762 /* OSLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSLog.h; sourceTree = "<group>"; };
 		4C1338F81B8E4A860085F6A4 /* XRSystemInformation.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = XRSystemInformation.strings; path = "Resources/Language Files/XRSystemInformation.strings"; sourceTree = "<group>"; };
 		4C1923CB1A900DBF0076F65A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4C1DC23D1F14309100C61416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -127,6 +135,33 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		4C1314FC29CB00D400623762 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				4C1314FD29CB00DE00623762 /* Private */,
+				4C1314FE29CB00F300623762 /* Public */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		4C1314FD29CB00DE00623762 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				4C1314FF29CB017600623762 /* SharedServices.pch */,
+				4C13150629CB064100623762 /* OSLog.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		4C1314FE29CB00F300623762 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				4C13150229CB029C00623762 /* NSMethodSignature.h */,
+				4C13150029CB024700623762 /* SharedServices.h */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
 		4C1338FA1B8E4A8B0085F6A4 /* Language Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +176,7 @@
 				4C5847F129C671FA0056B910 /* Accessibility.swift */,
 				4C9C09BF29C662370047A0DE /* AddressBook.swift */,
 				4C9C09C129C662710047A0DE /* Extensions */,
+				4C1314FC29CB00D400623762 /* Headers */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -162,6 +198,7 @@
 		4C5847F429C67FDC0056B910 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				4C13150429CB02FC00623762 /* NSMethodSignature.m */,
 				4C77C46C29C6B7A300C4BFB6 /* NSBundle.swift */,
 				4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatter.swift */,
 				4C77C47329C6BA1000C4BFB6 /* NSCharacterSet.swift */,
@@ -229,6 +266,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C13150129CB025600623762 /* SharedServices.h in Headers */,
+				4C13150329CB029C00623762 /* NSMethodSignature.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +347,7 @@
 				4CE04D9C20E10609000C74E6 /* Dictionary.swift in Sources */,
 				4C1314FB29CA713000623762 /* NSTextField.swift in Sources */,
 				4C1314D129C9241200623762 /* NSFont.swift in Sources */,
+				4C13150529CB02FD00623762 /* NSMethodSignature.m in Sources */,
 				4C1314F929CA6E9300623762 /* NSWorkspace.swift in Sources */,
 				4C1314CD29C916A900623762 /* NSLayoutConstraint.swift in Sources */,
 				4C77C47529C6BA1000C4BFB6 /* NSCharacterSet.swift in Sources */,
@@ -334,18 +374,11 @@
 		1DEB91AF08733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
 				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = Headers/Private/SharedServices.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codeux.frameworks.SharedServices;
 				PRODUCT_NAME = SharedServices;
-				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -367,19 +400,11 @@
 		4CF3FD0120E28E5D00A93C98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = YES;
 				FRAMEWORK_VERSION = A;
+				GCC_PREFIX_HEADER = Headers/Private/SharedServices.pch;
 				INFOPLIST_FILE = Resources/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.codeux.frameworks.SharedServices;
 				PRODUCT_NAME = SharedServices;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;

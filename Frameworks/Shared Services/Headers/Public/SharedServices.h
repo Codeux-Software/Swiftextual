@@ -30,17 +30,10 @@
 *
 *********************************************************************** */
 
-import os.log
+#ifdef __OBJC__
 
-internal extension OSLog
-{
-	/// Log system used for all framework purposes
-	static let frameworkLog = OSLog(subsystem: "com.codeux.frameworks.SharedServices", category: "General")
-}
+@import Cocoa;
 
-@objc(XRLogging)
-@objcMembers
-internal class XRLogging: NSObject
-{
-	static let frameworkLog = { OSLog.frameworkLog }()
-}
+#import <SharedServices/NSMethodSignature.h>
+
+#endif
