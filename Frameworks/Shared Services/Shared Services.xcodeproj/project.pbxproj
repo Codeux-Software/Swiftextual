@@ -10,6 +10,7 @@
 		4C1314CD29C916A900623762 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314CC29C916A900623762 /* NSLayoutConstraint.swift */; };
 		4C1314D129C9241200623762 /* NSFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314D029C9241200623762 /* NSFont.swift */; };
 		4C1314D329C9B76300623762 /* NSArrayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314D229C9B76300623762 /* NSArrayController.swift */; };
+		4C1314F929CA6E9300623762 /* NSWorkspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314F829CA6E9300623762 /* NSWorkspace.swift */; };
 		4C1314FB29CA713000623762 /* NSTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1314FA29CA713000623762 /* NSTextField.swift */; };
 		4C5847F029C66C570056B910 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847EF29C66C570056B910 /* Logging.swift */; };
 		4C5847F229C671FA0056B910 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847F129C671FA0056B910 /* Accessibility.swift */; };
@@ -37,6 +38,7 @@
 		4C1314CC29C916A900623762 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraint.swift; sourceTree = "<group>"; };
 		4C1314D029C9241200623762 /* NSFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSFont.swift; sourceTree = "<group>"; };
 		4C1314D229C9B76300623762 /* NSArrayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSArrayController.swift; sourceTree = "<group>"; };
+		4C1314F829CA6E9300623762 /* NSWorkspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSWorkspace.swift; sourceTree = "<group>"; };
 		4C1314FA29CA713000623762 /* NSTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSTextField.swift; sourceTree = "<group>"; };
 		4C1338F81B8E4A860085F6A4 /* XRSystemInformation.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = XRSystemInformation.strings; path = "Resources/Language Files/XRSystemInformation.strings"; sourceTree = "<group>"; };
 		4C1923CB1A900DBF0076F65A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
@@ -178,6 +180,7 @@
 				4C1314D029C9241200623762 /* NSFont.swift */,
 				4C1314CC29C916A900623762 /* NSLayoutConstraint.swift */,
 				4C1314FA29CA713000623762 /* NSTextField.swift */,
+				4C1314F829CA6E9300623762 /* NSWorkspace.swift */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				4CE04D9C20E10609000C74E6 /* Dictionary.swift in Sources */,
 				4C1314FB29CA713000623762 /* NSTextField.swift in Sources */,
 				4C1314D129C9241200623762 /* NSFont.swift in Sources */,
+				4C1314F929CA6E9300623762 /* NSWorkspace.swift in Sources */,
 				4C1314CD29C916A900623762 /* NSLayoutConstraint.swift in Sources */,
 				4C77C47529C6BA1000C4BFB6 /* NSCharacterSet.swift in Sources */,
 				4C77C47D29C6C0CE00C4BFB6 /* NSColor.swift in Sources */,
