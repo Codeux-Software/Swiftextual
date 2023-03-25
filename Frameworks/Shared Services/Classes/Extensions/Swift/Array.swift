@@ -89,7 +89,13 @@ public extension Array where Element == URL
 	var resolvingPaths: [String]
 	{
 		compactMap {
-			try? FileManager.default.resolveItem(atURL: $0)?.location.path
+			let r = try? FileManager.default.resolveItem(atURL: $0)
+
+			if let r, r.type == .none {
+				return r.location.path
+			}
+
+			return nil
 		}
 	}
 }

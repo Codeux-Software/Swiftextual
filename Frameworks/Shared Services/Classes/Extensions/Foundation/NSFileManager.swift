@@ -45,6 +45,9 @@ public extension FileManager
 
 		/// Destination is other type not recognized by this library.
 		case other
+
+		/// Destination does not exist.
+		case none
 	}
 
 	/// Does item at path exist as a directory?
@@ -94,7 +97,7 @@ public extension FileManager
 	/// - Returns: `true` if destination is occupied. `false` otherwise.
 	@inlinable func destinationOccupied(atPath path: String) throws -> Bool
 	{
-		try fileType(atPath: path) != nil
+		try fileType(atPath: path) != .none
 	}
 
 	/// Is the destination path occupied by something?
@@ -108,7 +111,7 @@ public extension FileManager
 	/// - Returns: `true` if destination is occupied. `false` otherwise.
 	@inlinable func destinationOccupied(atURL url: URL) throws -> Bool
 	{
-		try fileType(atURL: url) != nil
+		try fileType(atURL: url) != .none
 	}
 
 	/// Type of item at destination.
@@ -118,9 +121,9 @@ public extension FileManager
 	///
 	/// - Parameter path: File URL of destination.
 	/// - Returns: See `FileType` enum.
-	@inlinable func fileType(atPath path: String) throws -> FileType?
+	@inlinable func fileType(atPath path: String) throws -> FileType
 	{
-		try resolveItem(atPath: path)?.type
+		try resolveItem(atPath: path).type
 	}
 
 	/// Type of item at destination.
@@ -130,31 +133,29 @@ public extension FileManager
 	///
 	/// - Parameter url: File URL of destination.
 	/// - Returns: See `FileType` enum.
-	@inlinable func fileType(atURL url: URL) throws -> FileType?
+	@inlinable func fileType(atURL url: URL) throws -> FileType
 	{
-		try resolveItem(atURL: url)?.type
+		try resolveItem(atURL: url).type
 	}
 
 	/// Resolve symbolic links and alias files to find the true destination.
 	///
 	/// - Parameter path: A file path
 	/// - Returns: A tuple that contains the destination of the path and
-	/// file type of the destination. `nil` if destination does not exist.
-	@inlinable func resolveItem(atPath path: String) throws -> (location: String, type: FileType)?
+	/// file type of the destination.
+	@inlinable func resolveItem(atPath path: String) throws -> (location: String, type: FileType)
 	{
-		if let (l, t) = try resolveItem(atURL: path.fileURL) {
-			return (l.path, t)
-		}
+		let r = try resolveItem(atURL: path.fileURL)
 
-		return nil
+		return (r.location.path, r.type)
 	}
 
 	/// Resolve symbolic links and alias files to find the true destination.
 	///
 	/// - Parameter url: A file URL
 	/// - Returns: A tuple that contains the destination of the URL and
-	/// file type of the destination. `nil` if destination does not exist.
-	func resolveItem(atURL url: URL) throws -> (location: URL, type: FileType)?
+	/// file type of the destination.
+	func resolveItem(atURL url: URL) throws -> (location: URL, type: FileType)
 	{
 		guard url.isFileURL else {
 			throw URLAccessError.notFileURL
@@ -167,7 +168,7 @@ public extension FileManager
 		location.resolveSymlinksInPath()
 
 		guard try location.checkResourceIsReachable() else {
-			return nil
+			return (location, .none)
 		}
 
 		let properties = try location.resourceValues(forKeys: [.isAliasFileKey, .isRegularFileKey, .isDirectoryKey])
@@ -191,7 +192,7 @@ public extension FileManager
 	///
 	/// - Parameter path: File path to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func lockItem(atPath path: String) throws -> Bool
+	@inlinable func lockItem(atPath path: String) throws
 	{
 		try lockItem(atURL: path.fileURL)
 	}
@@ -200,7 +201,7 @@ public extension FileManager
 	///
 	/// - Parameter path: File path to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func unlockItem(atPath path: String) throws -> Bool
+	@inlinable func unlockItem(atPath path: String) throws
 	{
 		try unlockItem(atURL: path.fileURL)
 	}
@@ -209,7 +210,7 @@ public extension FileManager
 	///
 	/// - Parameter path: File URL to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func lockItem(atURL url: URL) throws -> Bool
+	@inlinable func lockItem(atURL url: URL) throws
 	{
 		try toggleLock(atURL: url, on: true)
 	}
@@ -218,7 +219,7 @@ public extension FileManager
 	///
 	/// - Parameter path: File URL to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func unlockItem(atURL url: URL) throws -> Bool
+	@inlinable func unlockItem(atURL url: URL) throws
 	{
 		try toggleLock(atURL: url, on: false)
 	}
@@ -243,7 +244,7 @@ public extension FileManager
 			try destination.setResourceValues(properties)
 		} catch {
 			os_log("Failed to set new properties on URL '%@': %@", log: .frameworkLog, type: .fault,
-				   String(describing: destination), String(describing: error))
+				   String(describing: url), String(describing: error))
 
 			throw URLAccessError.otherError(error)
 		}
