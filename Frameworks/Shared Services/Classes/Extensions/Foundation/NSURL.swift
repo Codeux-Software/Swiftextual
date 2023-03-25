@@ -35,6 +35,21 @@ import os.log
 
 public extension URL
 {
+	/// Errors that may be be thrown when accessing a URL
+	/// from various components of this library.
+	enum AccessError: Error
+	{
+		/// URL is not a file URL.
+		case notFileURL
+
+		/// Error returned from an Apple API that works on a URL.
+		case otherError(Error)
+	}
+
+	/// Shorthand for single key lookup with `resourceValues(forKeys:)`.
+	/// Please see the documentation for that function for additional information.
+	/// - Parameter key: Resource key to query.
+	/// - Returns: Value of resource key. `nil` otherwise.
 	func resourceValue(forKey key: URLResourceKey) -> URLResourceValues?
 	{
 		do {
@@ -47,25 +62,46 @@ public extension URL
 		return nil
 	}
 
-	var fllesystemRepresentationString: String?
+	/// Filesystem representation string for file URL.
+	var filesystemRepresentationString: String
 	{
-		guard isFileURL else {
-			return nil
-		}
-
-		var string: String? = nil
-
-		withUnsafeFileSystemRepresentation { (rep: (UnsafePointer<Int8>?)) in
-			if let rep {
-				string = FileManager.default.string(withFileSystemRepresentation:rep, length:strlen(rep))
+		get throws {
+			guard isFileURL else {
+				throw AccessError.notFileURL
 			}
-		}
 
-		return string
+			var string: String
+
+			withUnsafeFileSystemRepresentation { (rep: (UnsafePointer<Int8>?)) in
+				if let rep {
+					string = FileManager.default.string(withFileSystemRepresentation:rep, length:strlen(rep))
+				}
+			}
+
+			return string
+		}
 	}
 
+	/// Use the value of `filesystemRepresentationString` to perform
+	/// comparison between two file URLs.
+	///
+	/// - Parameter url: URL to compare self to.
+	/// - Returns: `true` if equal. `false` otherwise.
 	func filesystemRepresentation(isEqualToURL url: URL) -> Bool
 	{
-		fllesystemRepresentationString == url.fllesystemRepresentationString
+		/// Guard is necessary because otherwise if both calls to
+		/// `filesystemRepresentationString` result in a `nil` value,
+		/// then the result will be `true` which is not desired.
+		guard let left = try?      filesystemRepresentationString,
+			  let right = try? url.filesystemRepresentationString else {
+			return false
+		}
+
+		return left == right
 	}
 }
+
+/// Convenience declaration for URL access errors.
+///
+/// See `URL.AccessError`
+public typealias URLAccessError = URL.AccessError

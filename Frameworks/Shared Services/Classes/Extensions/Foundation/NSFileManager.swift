@@ -40,7 +40,7 @@ public extension FileManager
 		/// Destination is a regular file.
 		case file
 
-		/// Destination is a direcotry.
+		/// Destination is a directory.
 		case directory
 
 		/// Destination is other type not recognized by this library.
@@ -156,12 +156,8 @@ public extension FileManager
 	/// file type of the destination. `nil` if destination does not exist.
 	func resolveItem(atURL url: URL) throws -> (location: URL, type: FileType)?
 	{
-		/* This was at first a precondition, but that was changed at
-		 a later time so that the `resolvingPaths` helper property
-		 on `Array<URL>` has less work to do. No need for iti to crash
-		 the entire environment just because it contained non-file URL. */
 		guard url.isFileURL else {
-			return nil
+			throw URLAccessError.notFileURL
 		}
 
 		var location = url
@@ -195,36 +191,36 @@ public extension FileManager
 	///
 	/// - Parameter path: File path to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func lockItem(atPath path: String) -> Bool
+	@inlinable func lockItem(atPath path: String) throws -> Bool
 	{
-		lockItem(atURL: path.fileURL)
+		try lockItem(atURL: path.fileURL)
 	}
 
 	/// Unlock item at destination.
 	///
 	/// - Parameter path: File path to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func unlockItem(atPath path: String) -> Bool
+	@inlinable func unlockItem(atPath path: String) throws -> Bool
 	{
-		unlockItem(atURL: path.fileURL)
+		try unlockItem(atURL: path.fileURL)
 	}
 
 	/// Lock item at destination.
 	///
 	/// - Parameter path: File URL to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func lockItem(atURL url: URL) -> Bool
+	@inlinable func lockItem(atURL url: URL) throws -> Bool
 	{
-		toggleLock(atURL: url, on: true)
+		try toggleLock(atURL: url, on: true)
 	}
 
 	/// Unlock item at destination.
 	///
 	/// - Parameter path: File URL to destination.
 	/// - Returns: `true` on success. `false` otherwise.
-	@inlinable func unlockItem(atURL url: URL) -> Bool
+	@inlinable func unlockItem(atURL url: URL) throws -> Bool
 	{
-		toggleLock(atURL: url, on: false)
+		try toggleLock(atURL: url, on: false)
 	}
 
 	/// Toggle lock on item at destination.
@@ -232,24 +228,24 @@ public extension FileManager
 	/// - Parameter path: File URL to destination.
 	/// - Parameter on: Lock state: `true` for on, `false` for off.
 	/// - Returns: `true` on success. `false` otherwise.
-	func toggleLock(atURL url: URL, on: Bool) -> Bool
+	func toggleLock(atURL url: URL, on: Bool) throws
 	{
-		precondition(url.isFileURL)
+		guard url.isFileURL else {
+			throw URLAccessError.notFileURL
+		}
 
 		var properties = URLResourceValues()
 		properties.isUserImmutable = on
 
-		var destination = url
-
 		do {
-			try destination.setResourceValues(properties)
+			var destination = url // needs to be immutable
 
-			return true
+			try destination.setResourceValues(properties)
 		} catch {
 			os_log("Failed to set new properties on URL '%@': %@", log: .frameworkLog, type: .fault,
 				   String(describing: destination), String(describing: error))
 
-			return false
+			throw URLAccessError.otherError(error)
 		}
 	}
 
@@ -263,9 +259,9 @@ public extension FileManager
 	///
 	/// - Parameter url: File path to destination.
 	/// - Returns: `true` if item is 100% downloaded. `false` otherwise.
-	@inlinable func isUbiquitousItemDownloaded(atPath path: String) -> Bool
+	@inlinable func isUbiquitousItemDownloaded(atPath path: String) throws -> Bool
 	{
-		isUbiquitousItemDownloaded(atURL: path.fileURL)
+		try isUbiquitousItemDownloaded(atURL: path.fileURL)
 	}
 
 	/// Is cloud item at destination 100% downloaded?
@@ -278,9 +274,11 @@ public extension FileManager
 	///
 	/// - Parameter url: File URL to destination.
 	/// - Returns: `true` if item is 100% downloaded. `false` otherwise.
-	func isUbiquitousItemDownloaded(atURL url: URL) -> Bool
+	func isUbiquitousItemDownloaded(atURL url: URL) throws -> Bool
 	{
-		precondition(url.isFileURL)
+		guard url.isFileURL else {
+			throw URLAccessError.notFileURL
+		}
 
 		let properties: URLResourceValues
 
@@ -290,7 +288,7 @@ public extension FileManager
 			os_log("Failed to read resource values for URL '%@': %@", log: .frameworkLog, type: .error,
 				   String(describing: url), String(describing: error))
 
-			return false
+			throw URLAccessError.otherError(error)
 		}
 
 		/* If item is not in the cloud, then we can assume it is
@@ -317,11 +315,11 @@ public extension FileManager
 				return false
 			}
 
-			if files.contains(where: { isUbiquitousItemDownloaded(atURL: $0) == false } ) {
+			if files.contains(where: { try isUbiquitousItemDownloaded(atURL: $0) == false } ) {
 				return false /* Something in the directory is downloading. */
 			}
 
-			return true /* Nothing in direcotry is downloading. */
+			return true /* Nothing in directory is downloading. */
 		} // isDirectory
 
 		return 	properties.ubiquitousItemDownloadingStatus == .current ||
@@ -339,10 +337,10 @@ public extension FileManager
 	///   - destinationPath: The destination file path
 	///   - copyInsteadOfMove: `true` to perform a copy operation instead of move. Defualts to `false`.
 	///   - trashDestination: `true` to move destination file to Trash instead of outright vanishing. Defaults to `false`.
-	/// - Returns: `true` on success. `false` otherwise.
-	func relocateItem(atPath sourcePath: String, toPath destinationPath: String, copyInsteadOfMove: Bool = false, trashDestination: Bool = false) -> Bool
+	/// - Returns: No error on success. Error describing problem otherwise.
+	func relocateItem(atPath sourcePath: String, toPath destinationPath: String, copyInsteadOfMove: Bool = false, trashDestination: Bool = false) throws
 	{
-		relocateItem(atURL: sourcePath.fileURL, toURL: destinationPath.fileURL, copyInsteadOfMove: copyInsteadOfMove, trashDestination: trashDestination)
+		try relocateItem(atURL: sourcePath.fileURL, toURL: destinationPath.fileURL, copyInsteadOfMove: copyInsteadOfMove, trashDestination: trashDestination)
 	}
 
 	/// Perform a file copy or move operation from one path to another.
@@ -354,13 +352,14 @@ public extension FileManager
 	/// - Parameters:
 	///   - sourcePath: The original file path
 	///   - destinationPath: The destination file path
-	///   - copyInsteadOfMove: `true` to perform a copy operation instead of move. Defualts to `false`.
+	///   - copyInsteadOfMove: `true` to perform a copy operation instead of move. Defaults to `false`.
 	///   - trashDestination: `true` to move destination file to Trash instead of outright vanishing. Defaults to `false`.
 	/// - Returns: `true` on success. `false` otherwise.
-	func relocateItem(atURL sourceURL: URL, toURL destinationURL: URL, copyInsteadOfMove: Bool = false, trashDestination: Bool = false) -> Bool
+	func relocateItem(atURL sourceURL: URL, toURL destinationURL: URL, copyInsteadOfMove: Bool = false, trashDestination: Bool = false) throws
 	{
-		precondition(sourceURL.isFileURL)
-		precondition(destinationURL.isFileURL)
+		guard sourceURL.isFileURL && destinationURL.isFileURL else {
+			throw URLAccessError.notFileURL
+		}
 
 		if let exists = try? destinationOccupied(atURL: destinationURL), exists {
 			do {
@@ -373,7 +372,7 @@ public extension FileManager
 				os_log("Failed to remove file at destination: '%@': '%@'", log: .frameworkLog, type: .error,
 					   String(describing: destinationURL), String(describing: error))
 
-				return false
+				throw URLAccessError.otherError(error)
 			}
 		}
 
@@ -387,9 +386,7 @@ public extension FileManager
 			os_log("Failed to copy/move file '%@' -> '%@': '%@'", log: .frameworkLog, type: .error,
 				   String(describing: sourceURL), String(describing: destinationURL), String(describing: error))
 
-			return false
+			throw URLAccessError.otherError(error)
 		}
-
-		return true
 	}
 }
