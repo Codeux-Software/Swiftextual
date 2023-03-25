@@ -34,7 +34,7 @@ import os.log
 
 public extension Dictionary where Key == String
 {
-	/// Case insensitive subscript
+	/// Case insensitive subscript.
 	subscript(caseInsensitive key: Key) -> Value?
 	{
 		if let keyOut = keys.first(where: { $0.caseInsensitiveCompare(key) == .orderedSame }) {

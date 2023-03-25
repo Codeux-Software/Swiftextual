@@ -35,7 +35,7 @@ import os.log
 
 public extension NSArrayController
 {
-	/// Remove all arranged objects
+	/// Remove all arranged objects.
 	func removeAllArrangedObjects()
 	{
 		guard let count = (arrangedObjects as? Array<Any>)?.count else {

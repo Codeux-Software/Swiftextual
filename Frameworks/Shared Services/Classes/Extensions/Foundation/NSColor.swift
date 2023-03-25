@@ -109,7 +109,7 @@ public extension NSColor
 		return false
 	}
 
-	/// Inverted color
+	/// Inverted color.
 	var invertedColor: NSColor?
 	{
 		if isInRGBColorSpace {

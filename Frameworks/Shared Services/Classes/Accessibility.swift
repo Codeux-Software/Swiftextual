@@ -32,7 +32,7 @@
 
 import CoreFoundation
 
-/// Assortment of services for accessibility
+/// Assortment of services for accessibility.
 public class Accessibility
 {
 	/// Does the current user have Voice Over turned on?

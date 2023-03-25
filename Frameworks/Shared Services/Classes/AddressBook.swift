@@ -33,12 +33,12 @@
 import os.log
 import Contacts
 
-/// Assortment of services for Contacts
+/// Assortment of services for Contacts.
 public class AddressBook
 {
-	/// Contact card for the current user
+	/// Contact card for the current user.
 	///
-	/// - Parameter keys: Array of descriptors for information to fetch
+	/// - Parameter keys: Array of descriptors for information to fetch.
 	/// - Returns: Contact card or `nil` otherwise.
 	fileprivate static func myCardWithKeys(toFetch keys: [CNKeyDescriptor]) -> CNContact?
 	{

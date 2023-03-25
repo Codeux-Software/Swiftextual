@@ -101,7 +101,7 @@ public extension String
 		isIPv4Address || isIPv6Address
 	}
 
-	/// File URL of string including tilde expansion
+	/// File URL of string including tilde expansion.
 	@inlinable var fileURL: URL
 	{
 		URL(fileURLWithPath: (self as NSString).expandingTildeInPath)
@@ -114,7 +114,7 @@ public extension String
 		addingPercentEncoding(withAllowedCharacters: .percentEncodedSet)
 	}
 
-	/// Percent decoded string
+	/// Percent decoded string.
 	@inlinable var percentDecoded: String?
 	{
 		removingPercentEncoding
