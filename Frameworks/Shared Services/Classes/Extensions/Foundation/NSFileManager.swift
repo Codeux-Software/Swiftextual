@@ -316,7 +316,7 @@ public extension FileManager
 				return false
 			}
 
-			if files.contains(where: { try isUbiquitousItemDownloaded(atURL: $0) == false } ) {
+			if try files.contains(where: { try isUbiquitousItemDownloaded(atURL: $0) == false } ) {
 				return false /* Something in the directory is downloading. */
 			}
 

@@ -70,7 +70,7 @@ public extension URL
 				throw AccessError.notFileURL
 			}
 
-			var string: String
+			var string: String = ""
 
 			withUnsafeFileSystemRepresentation { (rep: (UnsafePointer<Int8>?)) in
 				if let rep {
