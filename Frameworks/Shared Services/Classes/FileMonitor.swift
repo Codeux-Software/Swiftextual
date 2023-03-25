@@ -34,7 +34,7 @@ import Combine
 import CoreServices
 import os.log
 
-/// `FileMonitor` can be used of monitoring for changes to a specific
+/// `FileMonitor` can be used to monitor for changes to a specific
 /// set of file URLs. It can associate an optional context with each
 /// to make it easier to work with events that dispatch from it.
 public class FileMonitor
@@ -227,7 +227,7 @@ public class FileMonitor
 	/// - Parameter latency: Latency between each dispatch of events. Defaults to `1.0`.
 	/// - Parameter resolveDestination: For each file URL that this monitor was initialized
 	/// with, any that are symbolic links or alias files will be resolved. The destination
-	/// of the link is then monitored rather than the link file itself. Defaults to `false`.
+	/// of the link is then monitored rather than the link file itself. Defaults to `true`.
 	/// - Returns: `true` on success. `false` otherwise.
 	func startMonitoring(withLatency latency: Double = 1.0, resolveDestination: Bool = true) -> Bool
 	{
