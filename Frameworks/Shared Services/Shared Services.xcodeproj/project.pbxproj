@@ -60,7 +60,7 @@
 		4C5847EF29C66C570056B910 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		4C5847F129C671FA0056B910 /* Accessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Accessibility.swift; path = Classes/Accessibility.swift; sourceTree = "<group>"; };
 		4C5BE82D29CF110B0072DA5A /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SystemInfo.swift; path = Classes/SystemInfo.swift; sourceTree = "<group>"; };
-		4C62E44329CD1395008625C5 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		4C62E44329CD1395008625C5 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = Classes/Keychain.swift; sourceTree = "<group>"; };
 		4C68752520E2CA530055E541 /* Number.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
 		4C77C46C29C6B7A300C4BFB6 /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
 		4C77C47229C6BA1000C4BFB6 /* NSByteCountFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSByteCountFormatter.swift; sourceTree = "<group>"; };
