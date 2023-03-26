@@ -34,7 +34,7 @@ import os.log
 import Contacts
 
 /// Assortment of services for Contacts.
-public class AddressBook
+public final class AddressBook
 {
 	/// Contact card for the current user.
 	///
@@ -62,7 +62,7 @@ public class AddressBook
 
 	/// Nickname of the current user from their contact card,
 	/// their first name if that is not configured, or `nil` otherwise.
-	static var myName: String?
+	public static var myName: String?
 	{
 		let keys = [CNContactGivenNameKey as CNKeyDescriptor,
 					CNContactFamilyNameKey as CNKeyDescriptor]
@@ -88,7 +88,7 @@ public class AddressBook
 
 	/// First e-mail address configured in the contact card
 	/// of the current user or `nil` otherwise.
-	static var myEmailAddress: String?
+	public static var myEmailAddress: String?
 	{
 		let keys: [CNKeyDescriptor] = [CNContactEmailAddressesKey as CNKeyDescriptor]
 

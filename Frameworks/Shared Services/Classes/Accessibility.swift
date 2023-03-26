@@ -33,10 +33,10 @@
 import CoreFoundation
 
 /// Assortment of services for accessibility.
-public class Accessibility
+public final class Accessibility
 {
 	/// Does the current user have Voice Over turned on?
-	static var voiceOverEnabled: Bool
+	public static var voiceOverEnabled: Bool
 	{
 		CFPreferencesGetAppBooleanValue("voiceOverOnOffKey" as CFString, "com.apple.universalaccess" as CFString, nil)
 	}

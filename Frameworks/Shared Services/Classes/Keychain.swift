@@ -35,16 +35,16 @@ import os.log
 
 /// The `Keychain` class is responsible for the task of adding,
 /// removing, and modifying passwords in the user's keychain.
-public class Keychain
+public final class Keychain
 {
 	/// `Item` is used to identify a specific entry in the keychain.
-	struct KeychainItem
+	public struct KeychainItem
 	{
 		/// A label describing the contents of the item.
-		let name: String
+		public let name: String
 
 		/// A unique identifier for the item.
-		let identifier: String
+		public let identifier: String
 
 		/// Password associated with the item.
 		///
@@ -54,11 +54,11 @@ public class Keychain
 		/// an item to the keychain or modifying it. Use an empty string
 		/// instead to set no password. Assigning `nil` when performing
 		/// these actions will throw a precondition failure.
-		var password: String?
+		public var password: String?
 	}
 
 	/// Errors that can occur when accessing the keychain.
-	enum KeychainError: Error, Equatable
+	public enum KeychainError: Error, Equatable
 	{
 		/// Item does not exist in the keychain.
 		case itemNotFound
@@ -79,7 +79,7 @@ public class Keychain
 		case otherStatus(OSStatus)
 
 		/// Convenience initializer.
-		init?(_ status: OSStatus) {
+		fileprivate init?(_ status: OSStatus) {
 			switch status {
 				case errSecSuccess:
 					return nil
@@ -111,7 +111,7 @@ public class Keychain
 	/// Add item to keychain.
 	/// - Parameter item: The item to add.
 	/// - Returns: `true` on success. `false` otherwise.
-	func add(_ item: KeychainItem) throws
+	public func add(_ item: KeychainItem) throws
 	{
 		guard let password = item.password else {
 			preconditionFailure("When adding a keychain item, a password must be specified.")
@@ -140,7 +140,7 @@ public class Keychain
 	///
 	/// - Parameter item: The item to modify.
 	/// - Returns: `true` on success. `false` otherwise.
-	func modify(_ item: KeychainItem) throws
+	public func modify(_ item: KeychainItem) throws
 	{
 		guard let newPassword = item.password else {
 			preconditionFailure("When modifying a keychain item, a password must be specified. That is the only attribute that can be modified.")
@@ -168,7 +168,7 @@ public class Keychain
 	/// Remove item from keychain.
 	/// - Parameter item: The item to delete.
 	/// - Returns: `true` on success. `false` otherwise.
-	func remove(_ item: KeychainItem) throws
+	public func remove(_ item: KeychainItem) throws
 	{
 		let search = searchDictionary(forItem: item)
 
@@ -182,7 +182,7 @@ public class Keychain
 	/// Password for item in keychain.
 	/// - Parameter item: The item to retrieve password for.
 	/// - Returns: The password as a string. `nil` if item does not exist, or an error occurred.
-	func password(forItem item: KeychainItem) throws -> String?
+	public func password(forItem item: KeychainItem) throws -> String?
 	{
 		var search = searchDictionary(forItem: item)
 

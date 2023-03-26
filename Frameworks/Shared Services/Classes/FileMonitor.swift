@@ -37,18 +37,18 @@ import os.log
 /// `FileMonitor` can be used to monitor for changes to a specific
 /// set of file URLs. It can associate an optional context with each
 /// to make it easier to work with events that dispatch from it.
-public class FileMonitor
+public final class FileMonitor
 {
 	/// Each event dispatched by a file monitor is a copy of `Event`
 	/// containing the file URL targeted by the event, flags that
 	/// were acted upon, an identifier, and an optional context that
 	/// was defined at the point the monitor was initialized.
-	struct Event
+	public struct Event
 	{
-		let url: URL
-		let flags: Flags
-		let identifier: FSEventStreamEventId
-		let context: Any?
+		public let url: URL
+		public let flags: Flags
+		public let identifier: FSEventStreamEventId
+		public let context: Any?
 
 		fileprivate init(url: URL, flags: FSEventStreamCreateFlags, identifier: FSEventStreamEventId, context: Any?) {
 			self.url = url
@@ -58,7 +58,7 @@ public class FileMonitor
 		}
 
 		/// Flags of event.
-		struct Flags: OptionSet {
+		public struct Flags: OptionSet {
 			public let rawValue: UInt32
 
 			public init(rawValue: UInt32) {
@@ -66,94 +66,94 @@ public class FileMonitor
 			}
 
 			/// See `kFSEventStreamEventFlagItemChangeOwner` for more information.
-			static let changeOwner = Flags(rawValue: 0x00004000)
+			public static let changeOwner = Flags(rawValue: 0x00004000)
 
 			/// See `kFSEventStreamEventFlagItemCloned` for more information.
-			static let cloned = Flags(rawValue: 0x00400000)
+			public static let cloned = Flags(rawValue: 0x00400000)
 
 			/// See `kFSEventStreamEventFlagItemCreated` for more information.
-			static let created = Flags(rawValue: 0x00000100)
+			public static let created = Flags(rawValue: 0x00000100)
 
 			/// See `kFSEventStreamEventFlagEventIdsWrapped` for more information.
-			static let eventIdsWrapped = Flags(rawValue: 0x00000008)
+			public static let eventIdsWrapped = Flags(rawValue: 0x00000008)
 
 			/// See `kFSEventStreamEventFlagItemXattrMod` for more information.
-			static let extendedAttributes = Flags(rawValue: 0x00008000)
+			public static let extendedAttributes = Flags(rawValue: 0x00008000)
 
 			/// See `kFSEventStreamEventFlagItemFinderInfoMod` for more information.
-			static let finder = Flags(rawValue: 0x00002000)
+			public static let finder = Flags(rawValue: 0x00002000)
 
 			/// See `kFSEventStreamEventFlagHistoryDone` for more information.
-			static let historyDone = Flags(rawValue: 0x00000010)
+			public static let historyDone = Flags(rawValue: 0x00000010)
 
 			/// See `kFSEventStreamEventFlagItemInodeMetaMod` for more information.
-			static let indexNodeMetadata = Flags(rawValue: 0x00000400)
+			public static let indexNodeMetadata = Flags(rawValue: 0x00000400)
 
 			/// See `kFSEventStreamEventFlagItemIsDir` for more information.
-			static let isDirectory = Flags(rawValue: 0x00020000)
+			public static let isDirectory = Flags(rawValue: 0x00020000)
 
 			/// See `kFSEventStreamEventFlagItemIsFile` for more information.
-			static let isFile = Flags(rawValue: 0x00010000)
+			public static let isFile = Flags(rawValue: 0x00010000)
 
 			/// See `kFSEventStreamEventFlagItemIsHardlink` for more information.
-			static let isHardlink = Flags(rawValue: 0x00100000)
+			public static let isHardlink = Flags(rawValue: 0x00100000)
 
 			/// See `kFSEventStreamEventFlagItemIsLastHardlink` for more information.
-			static let isLastHardlink = Flags(rawValue: 0x00200000)
+			public static let isLastHardlink = Flags(rawValue: 0x00200000)
 
 			/// See `kFSEventStreamEventFlagItemIsSymlink` for more information.
-			static let isSymlink = Flags(rawValue: 0x00040000)
+			public static let isSymlink = Flags(rawValue: 0x00040000)
 
 			/// See `kFSEventStreamEventFlagKernelDropped` for more information.
-			static let kernelDropped = Flags(rawValue: 0x00000004)
+			public static let kernelDropped = Flags(rawValue: 0x00000004)
 
 			/// See `kFSEventStreamEventFlagItemModified` for more information.
-			static let modified = Flags(rawValue: 0x00001000)
+			public static let modified = Flags(rawValue: 0x00001000)
 
 			/// See `kFSEventStreamEventFlagMount` for more information.
-			static let mount = Flags(rawValue: 0x00000040)
+			public static let mount = Flags(rawValue: 0x00000040)
 
 			/// See `kFSEventStreamEventFlagOwnEvent` for more information.
-			static let ownEvent = Flags(rawValue: 0x00080000)
+			public static let ownEvent = Flags(rawValue: 0x00080000)
 
 			/// See `kFSEventStreamEventFlagItemRemoved` for more information.
-			static let removed = Flags(rawValue: 0x00000200)
+			public static let removed = Flags(rawValue: 0x00000200)
 
 			/// See `kFSEventStreamEventFlagItemRenamed` for more information.
-			static let renamed = Flags(rawValue: 0x00000800)
+			public static let renamed = Flags(rawValue: 0x00000800)
 
 			/// See `kFSEventStreamEventFlagRootChanged` for more information.
-			static let rootChanged = Flags(rawValue: 0x00000020)
+			public static let rootChanged = Flags(rawValue: 0x00000020)
 
 			/// See `kFSEventStreamEventFlagMustScanSubDirs` for more information.
-			static let subdirectoryChanged = Flags(rawValue: 0x00000001)
+			public static let subdirectoryChanged = Flags(rawValue: 0x00000001)
 
 			/// See `kFSEventStreamEventFlagUnmount` for more information.
-			static let unmount = Flags(rawValue: 0x00000080)
+			public static let unmount = Flags(rawValue: 0x00000080)
 
 			/// See `kFSEventStreamEventFlagUserDropped` for more information.
-			static let userDropped = Flags(rawValue: 0x00000002)
+			public static let userDropped = Flags(rawValue: 0x00000002)
 
 			/// No flags for event.
-			static let none = Flags([])
+			public static let none = Flags([])
 		}
 	}
 
 	/// Event monitor.
-	let events$ = PassthroughSubject<Event, Never>()
+	public let events$ = PassthroughSubject<Event, Never>()
 
 	fileprivate let urls: [URL]
 	fileprivate let context: [String : Any] /// Key = URL file system representation
 
 	fileprivate var eventStream: FSEventStreamRef?
 
-	typealias URLWithContext = (url: URL, context: Any?)
+	public typealias URLWithContext = (url: URL, context: Any?)
 
 	/// Create new file monitor with a list of file URLs and
 	/// an optional context that is associated with each.
 	///
 	/// - Parameter urls: List of file URLs to monitor.
-	init(withURLs urls: [URLWithContext]) throws
+	public init(withURLs urls: [URLWithContext]) throws
 	{
 		var urlsOut: [URL] = []
 
@@ -177,31 +177,31 @@ public class FileMonitor
 		self.urls = urlsOut
 	}
 
-	convenience init(withURLs urls: [URL]) throws
+	@inlinable public convenience init(withURLs urls: [URL]) throws
 	{
 		let urlsOut = urls.map( { URLWithContext($0, nil) } )
 
 		try self.init(withURLs: urlsOut)
 	}
 
-	convenience init(withURL url: URLWithContext) throws
+	@inlinable public convenience init(withURL url: URLWithContext) throws
 	{
 		try self.init(withURLs: [url])
 	}
 
-	convenience init(withURL url: URL) throws
+	@inlinable public convenience init(withURL url: URL) throws
 	{
 		try self.init(withURLs: [url])
 	}
 
 	/// Is monitoring of events occurring?
-	var monitoring: Bool
+	public var monitoring: Bool
 	{
 		eventStream != nil
 	}
 
 	/// Stop monitoring for events.
-	func stopMonitoring()
+	public func stopMonitoring()
 	{
 		guard let eventStream else {
 			return
@@ -229,7 +229,7 @@ public class FileMonitor
 	/// with, any that are symbolic links or alias files will be resolved. The destination
 	/// of the link is then monitored rather than the link file itself. Defaults to `true`.
 	/// - Returns: `true` on success. `false` otherwise.
-	func startMonitoring(withLatency latency: Double = 1.0, resolveDestination: Bool = true) -> Bool
+	public func startMonitoring(withLatency latency: Double = 1.0, resolveDestination: Bool = true) -> Bool
 	{
 		if monitoring {
 			os_log("Cannot start monitor because it is already active.", log: .frameworkLog, type: .fault)
@@ -284,7 +284,7 @@ public class FileMonitor
 			return false
 		}
 
-		FSEventStreamSetDispatchQueue(eventStream, .global(qos: .default))
+		FSEventStreamSetDispatchQueue(eventStream, .global())
 
 		return FSEventStreamStart(eventStream)
 	}

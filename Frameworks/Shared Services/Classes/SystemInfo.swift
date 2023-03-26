@@ -10,7 +10,7 @@ import os.log
 /// properties within this class are tailored for that version
 /// and those to follow. Information such as the name of the
 /// operating system will not resolve prior to that release.
-public class SystemInfo
+public final class SystemInfo
 {
 	/// Ethernet interface iterator.
 	fileprivate static var ethernetInterfaces: io_iterator_t?
@@ -38,7 +38,7 @@ public class SystemInfo
 	}
 
 	/// MAC address of Ethernet interface formatted as a string.
-	static var ethernetMacAddress: String?
+	public static var ethernetMacAddress: String?
 	{
 		guard let services = ethernetInterfaces else {
 			return nil
