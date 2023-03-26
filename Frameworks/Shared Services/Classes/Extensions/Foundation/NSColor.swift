@@ -110,7 +110,7 @@ public extension NSColor
 	}
 
 	/// Inverted color.
-	var invertedColor: NSColor?
+	var inverted: NSColor?
 	{
 		if isInRGBColorSpace {
 			var c: ColorSpaceRGB = (0.0, 0.0, 0.0, 1.0)
