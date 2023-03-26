@@ -35,5 +35,6 @@
 @import Cocoa;
 
 #import <SharedServices/NSMethodSignature.h>
+#import <SharedServices/XRGlobalModels.h>
 
 #endif
