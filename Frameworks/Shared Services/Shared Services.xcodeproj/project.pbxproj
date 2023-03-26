@@ -18,6 +18,8 @@
 		4C13154229CBC31500623762 /* NSScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C13154129CBC31500623762 /* NSScreen.swift */; };
 		4C1D786129D07EBB00EE4422 /* XRGlobalModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D785F29D07EBB00EE4422 /* XRGlobalModels.m */; };
 		4C1D786229D07EBB00EE4422 /* XRGlobalModels.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C1D786029D07EBB00EE4422 /* XRGlobalModels.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4C1D786829D0891900EE4422 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D786729D0891900EE4422 /* Timer.swift */; };
+		4C1D786A29D0AFE000EE4422 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1D786929D0AFE000EE4422 /* Dispatch.swift */; };
 		4C5847F029C66C570056B910 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847EF29C66C570056B910 /* Logging.swift */; };
 		4C5847F229C671FA0056B910 /* Accessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5847F129C671FA0056B910 /* Accessibility.swift */; };
 		4C5BE82E29CF110B0072DA5A /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5BE82D29CF110B0072DA5A /* SystemInfo.swift */; };
@@ -59,6 +61,8 @@
 		4C1923CB1A900DBF0076F65A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4C1D785F29D07EBB00EE4422 /* XRGlobalModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XRGlobalModels.m; sourceTree = "<group>"; };
 		4C1D786029D07EBB00EE4422 /* XRGlobalModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XRGlobalModels.h; sourceTree = "<group>"; };
+		4C1D786729D0891900EE4422 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Timer.swift; path = Classes/Timer.swift; sourceTree = "<group>"; };
+		4C1D786929D0AFE000EE4422 /* Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		4C1DC23D1F14309100C61416 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4C2799882526F79100398A40 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
 		4C2A71E81B629EA200CD363B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -193,6 +197,7 @@
 				4C5BE82D29CF110B0072DA5A /* SystemInfo.swift */,
 				4C9C09C129C662710047A0DE /* Extensions */,
 				4C1314FC29CB00D400623762 /* Headers */,
+				4C1D786729D0891900EE4422 /* Timer.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 				4CE04D9D20E10CC4000C74E6 /* Array.swift */,
 				4CAA489A20E46AB500FDE1F5 /* Data.swift */,
 				4CE04D9B20E10609000C74E6 /* Dictionary.swift */,
+				4C1D786929D0AFE000EE4422 /* Dispatch.swift */,
 				4CFB742420E480A4001B88CE /* Error.swift */,
 				4C5847EF29C66C570056B910 /* Logging.swift */,
 				4C68752520E2CA530055E541 /* Number.swift */,
@@ -382,6 +388,7 @@
 				4C77C47D29C6C0CE00C4BFB6 /* NSColor.swift in Sources */,
 				4C77C47B29C6C0CE00C4BFB6 /* NSDate.swift in Sources */,
 				4C62E44429CD1395008625C5 /* Keychain.swift in Sources */,
+				4C1D786A29D0AFE000EE4422 /* Dispatch.swift in Sources */,
 				4C5BE82E29CF110B0072DA5A /* SystemInfo.swift in Sources */,
 				4C77C46D29C6B7A300C4BFB6 /* NSBundle.swift in Sources */,
 				4C5BE83429CF4D830072DA5A /* FileMonitor.swift in Sources */,
@@ -393,6 +400,7 @@
 				4C77C47429C6BA1000C4BFB6 /* NSByteCountFormatter.swift in Sources */,
 				4C68752620E2CA530055E541 /* Number.swift in Sources */,
 				4CE04D9E20E10CC4000C74E6 /* Array.swift in Sources */,
+				4C1D786829D0891900EE4422 /* Timer.swift in Sources */,
 				4CB76CD229C7939200B3EDDB /* NSURL.swift in Sources */,
 				4C5847F229C671FA0056B910 /* Accessibility.swift in Sources */,
 				4C13154229CBC31500623762 /* NSScreen.swift in Sources */,
